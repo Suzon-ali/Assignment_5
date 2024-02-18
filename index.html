@@ -281,7 +281,7 @@
                         <form class="space-y-4" >
                             <div class="space-y-4">
                                 <label class="font-semibold" for="passenger_name">Passenger Name *</label> <br>
-                            <input type="text" name="" id="passenger_name" placeholder="Enter your name" required class="border w-full p-4 rounded-xl">
+                            <input type="text" name="" id="passenger_name" placeholder="Enter your name"  class="border w-full p-4 rounded-xl">
                             </div>
 
 
@@ -318,6 +318,21 @@
 
         </div>
     </section>
+
+    <div id="modal" class="fixed hidden top-0 left-0 z-10 w-full h-full bg-gray-200  justify-center items-center">
+
+        <div class="py-10 px-10 bg-white z-20 flex flex-col justify-center items-center space-y-4 rounded-xl">
+            <img src="img/success.png" alt="">
+            <p class="text-center">Thank you for Booking Our Bus Seats. 
+                We are working hard to find <br> the best service and deals for you.</p>
+                <p class="text-white_low">Shortly you will find a confirmation in your email.</p>
+                <button class="bg-green-400 rounded-full px-20 py-3">
+                    Continue
+                </button>
+            
+        </div>
+
+    </div>
 
     <script src="script.js"></script>
 </body>

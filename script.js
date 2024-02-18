@@ -25,6 +25,7 @@ const discountContainer = document.getElementById('discount_container');
 const discountAmountContainer = document.getElementById('discount_amount');
 const nextButon = document.getElementById('next_button');
 const phoneNumberCointainer = document.getElementById('passenger_phone_number');
+const modal = document.getElementById('modal');
 let isNumber = false;
 
 
@@ -120,11 +121,25 @@ function addtoCart (seatName){
         seatCart.appendChild(li);
 }
 
+nextButon.addEventListener('click', function(){
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+})
 
 
 for(let i=0; i <= seats.length; i++){
     seats[i].addEventListener('click', (e)=>{
         
+        if(selectedSeats > 0 && isNumber && phoneNumberCointainer.value !== '' ){
+            nextButon.removeAttribute('disabled');
+            nextButon.classList.add('bg-success');
+        }else{
+            nextButon.setAttribute('disabled', 'disabled');
+            nextButon.classList.remove('bg-success');
+        }
+        console.log(ticketPrices);
+
+
         if (selectedSeats >= 4) {
             alert('You can not buy more than 4 seats');
             return; 
@@ -139,16 +154,21 @@ for(let i=0; i <= seats.length; i++){
         ticketPrices.push(ticketPrice);
         calculateTotalPrice();
         seatCount();
+        
+        if(selectedSeats > 0 && isNumber && phoneNumberCointainer.value !== '' ){
+            nextButon.removeAttribute('disabled');
+            nextButon.classList.add('bg-success');
+        }else{
+            nextButon.setAttribute('disabled', 'disabled');
+            nextButon.classList.remove('bg-success');
+        }
+
         if(selectedSeats === 4){
             applyCoupon.removeAttribute('disabled');
             applyCoupon.classList.remove('bg-gray-400');
             applyCoupon.classList.add('bg-success');
         }
-        if(selectedSeats > 0 && isNumber && phoneNumberCointainer.value !== '' ){
-            nextButon.removeAttribute('disabled');
-            nextButon.classList.add('bg-success');
-        }
-        console.log(ticketPrices);
+        
 
     })  
 }
