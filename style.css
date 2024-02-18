@@ -11,4 +11,11 @@ body{
     height: auto;
     font-family: "Inter", sans-serif;
     font-size: 1rem;
+    scroll-behavior: smooth;
+   
+}
+
+
+.selected_seat{
+    background: #1DD100 !important;
 }
