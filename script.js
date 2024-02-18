@@ -7,6 +7,11 @@ const ticketPrices = [];
 const coupon1 = 'NEW15';
 const coupon2 = 'Couple 20';
 let grandTotal = 0;
+let finalGrandTotal = 0;
+let offer = 0;
+let coupon = ''
+
+
 const seats = document.querySelectorAll('.seat');
 const seatLeftContainer = document.getElementById('seat-left');
 const seatsContainer = document.getElementById('seats-container');
@@ -14,7 +19,8 @@ const totalPriceContainer =  document.getElementById("total_price");
 const grandTotalContainer =  document.getElementById('grand_total');
 const couponContainer =  document.getElementById('coupon');
 const applyCoupon = document.getElementById('apply');
-let coupon = ''
+const couponBox = document.getElementById('coupon_box');
+
 
 couponContainer.addEventListener("keyup", function(){
     coupon = couponContainer.value ;
@@ -27,15 +33,16 @@ applyCoupon.addEventListener('click', ()=>{
         alert('Please insert coupon code');
     }
     else if(coupon === coupon1){
-        const offer = grandTotal / 100 * 15;
-        const finalGrandTotal = grandTotal - offer;
+        offer = grandTotal / 100 * 15;
+        finalGrandTotal = grandTotal - offer;
         grandTotalContainer.innerText = finalGrandTotal;
-        console.log("offer",offer)
-        console.log("finalGrandTotal",finalGrandTotal);
-
+        couponBox.style.display = 'none';
         
     }else if(coupon === coupon2){
-        alert("coupon two matching");
+        offer = grandTotal / 100 * 20;
+        finalGrandTotal = grandTotal - offer;
+        grandTotalContainer.innerText = finalGrandTotal;
+        couponBox.style.display = 'none';
     }else{
         alert("coupon is not correct");
     }
@@ -107,6 +114,8 @@ for(let i=0; i <= seats.length; i++){
         seatCount();
         if(selectedSeats === 4){
             applyCoupon.removeAttribute('disabled');
+            applyCoupon.classList.remove('bg-gray-400');
+            applyCoupon.classList.add('bg-success');
         }
         console.log(ticketPrices);
 
