@@ -20,6 +20,8 @@ const grandTotalContainer =  document.getElementById('grand_total');
 const couponContainer =  document.getElementById('coupon');
 const applyCoupon = document.getElementById('apply');
 const couponBox = document.getElementById('coupon_box');
+const discountContainer = document.getElementById('discount_container');
+const discountAmountContainer = document.getElementById('discount_amount')
 
 
 couponContainer.addEventListener("keyup", function(){
@@ -37,12 +39,16 @@ applyCoupon.addEventListener('click', ()=>{
         finalGrandTotal = grandTotal - offer;
         grandTotalContainer.innerText = finalGrandTotal;
         couponBox.style.display = 'none';
+        discountContainer.classList.remove('hidden');
+        discountAmountContainer.innerText = offer;
         
     }else if(coupon === coupon2){
         offer = grandTotal / 100 * 20;
         finalGrandTotal = grandTotal - offer;
         grandTotalContainer.innerText = finalGrandTotal;
         couponBox.style.display = 'none';
+        discountContainer.classList.remove('hidden');
+        discountAmountContainer.innerText = offer;
     }else{
         alert("coupon is not correct");
     }
