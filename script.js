@@ -10,6 +10,7 @@ let grandTotal = 0;
 let finalGrandTotal = 0;
 let offer = 0;
 let coupon = ''
+let phoneNumber = null;
 
 
 const seats = document.querySelectorAll('.seat');
@@ -21,13 +22,34 @@ const couponContainer =  document.getElementById('coupon');
 const applyCoupon = document.getElementById('apply');
 const couponBox = document.getElementById('coupon_box');
 const discountContainer = document.getElementById('discount_container');
-const discountAmountContainer = document.getElementById('discount_amount')
+const discountAmountContainer = document.getElementById('discount_amount');
+const nextButon = document.getElementById('next_button');
+const phoneNumberCointainer = document.getElementById('passenger_phone_number');
+let isNumber = false;
 
 
 couponContainer.addEventListener("keyup", function(){
     coupon = couponContainer.value ;
     console.log(coupon);
-})
+});
+phoneNumberCointainer.addEventListener('keyup', function(){
+    phoneNumber = parseFloat(phoneNumberCointainer.value);
+    if(typeof phoneNumber === 'number'){
+        isNumber = true;
+    }else{
+        isNumber = false;
+    }
+
+    if(selectedSeats > 0 && isNumber && phoneNumberCointainer.value !== '' ){
+        nextButon.removeAttribute('disabled');
+        nextButon.classList.add('bg-success');
+    }else{
+        nextButon.setAttribute('disabled', 'disabled');
+        nextButon.classList.remove('bg-success');
+    }
+
+});
+
 
 applyCoupon.addEventListener('click', ()=>{
     console.log("clicked on apply button")
@@ -77,7 +99,6 @@ function calculateTotalPrice (){
    console.log(totalPrice)
 }
 
-
 function addtoCart (seatName){
         const li = document.createElement('li');
         li.classList.add("flex" ,"justify-between" ,"items-center" ,"text-low_white");
@@ -122,6 +143,10 @@ for(let i=0; i <= seats.length; i++){
             applyCoupon.removeAttribute('disabled');
             applyCoupon.classList.remove('bg-gray-400');
             applyCoupon.classList.add('bg-success');
+        }
+        if(selectedSeats > 0 && isNumber && phoneNumberCointainer.value !== '' ){
+            nextButon.removeAttribute('disabled');
+            nextButon.classList.add('bg-success');
         }
         console.log(ticketPrices);
 
