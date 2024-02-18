@@ -22,7 +22,7 @@
     </header>
 
     <section class="w-full  lg:max-w-[1170px] mx-auto mt-10">
-        <div class="hero relative w-full h-[260px] lg:h-[550px] bg-[url('img/banner.png')] bg-center bg-no-repeat bg-cover">
+        <div class="hero lg:pt-20 relative w-full h-[260px] lg:h-[550px] bg-[url('img/banner.png')] bg-center bg-no-repeat bg-cover">
             <h1 class="text-2xl lg:text-6xl text-white font-bold text-center pt-8 lg;pt-28 lg:pb-5">
                 End-to-End Travel with
             </h1>
@@ -65,7 +65,7 @@
                     <img class="absolute h-full  top-0 left-[54%]" src="img/cupon-devider.png" alt="" />
                 </div>
                 <div class="w-[40%] flex flex-col justify-center items-center gap-3 lg:p-4">
-                    <h1 class="text-2xl lg:text-5xl font-bold text-center">Couple 20</h1>
+                    <h1 class="text-2xl lg:text-3xl font-bold text-center">Couple 20</h1>
                     <p class="text-low_white">Coupon Code</p>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                 within the app. The integrated testing features allow for a streamlined .</p>
         </div>
 
-        <div class="w-full relative  lg:flex items-center p-4 bg-white rounded-[30px]">
+        <div class="w-full lg:max-w-[1170px] relative  lg:flex items-center p-4 bg-white rounded-[30px]">
             <div class="lg:w-[75%]  lg:p-5 space-y-4">
                 <div class="lg:flex justify-between space-y-2 lg:space-y-0">
                     <div class="flex gap-3 lg:w-3/4 ">
@@ -96,7 +96,7 @@
                     </div>
                     <div class="flex  justify-center items-center bg-green-100 gap-1 p-4 rounded-lg text-success">
                         <img src="img/seat-green.png" alt="">
-                        <span>40</span> <span>Seats left</span>
+                        <span id="seat-left">40</span> <span>Seats left</span>
                     </div>
                 </div>
                 <div class="bg-[#F7F8F8] rounded-xl p-5">
@@ -132,7 +132,7 @@
             <img class="absolute hidden lg:block top-0 left-[74%] h-full" src="img/info-devider.png" alt="" />
 
         </div>
-        <div class="lg:flex w-full mt-10 bg-white rounded-xl relative gap-6">
+        <div class="lg:flex lg:max-w-[1170px] w-full mt-10 bg-white rounded-xl relative gap-6">
             <div class="lg:w-[60%] p-4">
                 <div class="text-2xl font-medium">
                     Select Your Seat
@@ -174,9 +174,9 @@
                         <div class="flex py-4 justify-center items-center text-low_white">J</div>
                         
                     </div>
-                    <div class=" w-[92%] grid grid-cols-4 gap-8 py-4 select-none">
-                        <div class="seat bg-gray-100 flex justify-center items-center rounded-xl text-low_white cursor-pointer p-4">A1</div>
-                        <div class="seat bg-gray-100 flex justify-center items-center rounded-xl text-low_white cursor-pointer p-4">A2</div>
+                    <div id="seats-container" class=" w-[92%] grid grid-cols-4 gap-8 py-4 select-none">
+                        <div class="seat  bg-gray-100 flex justify-center items-center rounded-xl text-low_white cursor-pointer p-4">A1</div>
+                        <div class="seat  bg-gray-100 flex justify-center items-center rounded-xl text-low_white cursor-pointer p-4">A2</div>
                         <div class="seat bg-gray-100 flex justify-center items-center rounded-xl text-low_white cursor-pointer p-4">A3</div>
                         <div class="seat bg-gray-100 flex justify-center items-center rounded-xl text-low_white cursor-pointer p-4">A4</div>
                         <div class="seat bg-gray-100 flex justify-center items-center rounded-xl text-low_white cursor-pointer p-4">B1</div>
@@ -233,7 +233,7 @@
                     <div class="bg-gray-100 p-4 w-full rounded-xl">
                         <div class="flex justify-between">
                             <div>
-                                Seat <span class="bg-success text-white px-3 py-[1px] rounded-lg">2</span>
+                                Seat <span id="selected_seat_amount" class="bg-success text-white px-3 py-[1px] rounded-lg">0</span>
                             </div>
                             <div>
                                 Class
@@ -245,36 +245,27 @@
 
                         <hr class="border-t-2 my-4 border-gray-300 border-dashed">
                         <div>
-                            <ul class="space-y-2">
-                                <li class="flex justify-between items-center text-low_white">
-                                <div>C2</div>
-                                <div>Economy</div>
-                                <div>550</div>
-                                </li>
-                                <li class="flex justify-between items-center text-low_white">
-                                    <div>C2</div>
-                                    <div>Economy</div>
-                                    <div>550</div>
-                                    </li>
+                            <ul id="seat_cart" class="space-y-2">
+                                
                             </ul>
 
                             <hr class="border-t-2 my-4 border-gray-300 border">
 
                             <div class="flex justify-between items-center">
                                 <div>Total Price</div>
-                                <div>BDT <span>1100</span></div>
+                                <div>BDT <span id="total_price" >0</span></div>
                             </div>
 
                             <div class="bg-white rounded-xl p-2 lg:p-4 mt-5 flex justify-between">
-                                <input class="border-none outline-none w-3/4 " type="text" placeholder="Have any coupon?">
-                                <button class="bg-success py-3 px-6 rounded-xl text-white cursor-pointer">
+                                <input id="coupon" class="border-none outline-none w-3/4 " type="text" placeholder="Have any coupon?">
+                                <button disabled id="apply" class="bg-success py-3 px-6 rounded-xl text-white ">
                                     Apply
                                 </button>
                             </div>
 
                             <div class="flex justify-between items-center mt-5 pb-4">
                                 <div>Grand Total</div>
-                                <div>BDT <span>1100</span></div>
+                                <div>BDT <span id="grand_total">0</span></div>
                             </div>
 
                         </div>
