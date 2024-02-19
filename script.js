@@ -130,7 +130,7 @@ nextButon.addEventListener('click', function(e){
 })
 
 
-for(let i=0; i <= seats.length; i++){
+for(let i=0; i < seats.length; i++){
     seats[i].addEventListener('click', (e)=>{
         
 
